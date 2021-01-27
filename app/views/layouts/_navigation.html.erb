@@ -29,9 +29,22 @@
               </li>
             </ul>
            -->
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+           <%= form_tag(search_list_path, :method => "get",   
+              class: 'navbar-form navbar-left') do %>  
+             <div class="input-group">  
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+              <div class="input-group-btn">  
+                <%= button_tag "Search", :class => 'btn btn-outline-success my-2 my-sm-0',:name => nil%>  
+              </div>  
+            </div>  
+          <% end %>
+
+           <!-- <form class="form-inline my-2 my-lg-0" action="/search">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> 
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to 'Search',search_list_path %> </button> 
+              
+            -->
             </form>
           </div>
         </div>  
