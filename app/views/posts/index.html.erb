@@ -1,2 +1,13 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% @post.each do |posts| %>
+		<% id = posts.user_id %>
+		<% name = @user.find(id).username %>
+		<%= name  %> <br> </br>
+    <%= posts.content %><br> </br>
+
+
+<% end %>
+
+<%= link_to 'Comment',comments_path %>
+<br> </br>
+
+<%= link_to 'Add Post', posts_path %>
