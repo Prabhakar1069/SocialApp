@@ -12,7 +12,8 @@
 	<br>
 	    
 		<%= button_to 'Comment',post_comments_path(posts),method: :get %>
-		<button class="btn btn-primary" type="submit">Like</button>
+		<%= button_to 'Like', post_likes_path(posts), method: :post %>
+		<p><%= posts.likes.count %> <%= (posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 		
 		<br>------------------------------------------------------------------------------------------<br>
 	</div>	
