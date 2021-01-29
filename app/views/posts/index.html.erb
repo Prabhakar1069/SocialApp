@@ -1,13 +1,25 @@
+<%= button_to 'Add Post',  new_post_path,method: :get %> <br> <br>
+-------------------------------------------------------------------------------------------
+
 <% @post.each do |posts| %>
+	<div class="container">
 		<% id = posts.user_id %>
 		<% name = @user.find(id).username %>
-		<%= name  %> <br> </br>
-    <%= posts.content %><br> </br>
+		<div> Username - <%= name  %> <br> </div>
+		<%= posts.content %><br> 
+
+		
+	<br>
+	    
+		<%= button_to 'Comment',post_comments_path(posts),method: :get %>
+		<button class="btn btn-primary" type="submit">Like</button>
+		
+		<br>------------------------------------------------------------------------------------------<br>
+	</div>	
 
 
 <% end %>
 
-<%= link_to 'Comment',comments_path %>
-<br> </br>
 
-<%= link_to 'Add Post', posts_path %>
+
+

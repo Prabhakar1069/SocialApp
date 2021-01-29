@@ -11,11 +11,16 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  
 
   resources :users, only: %i[index show] do
     resources :friendships, only: %i[create]
       
   end
+  resources :posts do 
+    resources :comments
+  end
+  
   resources :posts, only: %i[index new create show] do
     resources :likes, only: %i[create]
   end
@@ -25,17 +30,7 @@ Rails.application.routes.draw do
   end
 
   
-  # get 'friendships/create'
-  # get 'likes/create'
-  # get 'comments/new'
-  # get 'comments/create'
-  # get 'comments/index'
-  # get 'posts/index'
-  # get 'posts/show'
-  # get 'posts/new'
-  # get 'posts/create'
-  # get 'users/index'
-  # get 'users/show'
+  
   get 'list/friend'
   get '/search' => 'list#search', :as => 'search_list'
   

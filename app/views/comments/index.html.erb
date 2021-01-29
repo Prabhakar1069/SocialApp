@@ -1,8 +1,12 @@
 
 <% @comment.each do |comments| %>
+    <%= User.find(comments.user_id).username %> --
+
     <%= comments.content %><br> </br>
 
 
 <% end %>
 
-<%= link_to 'Add Comment', comments_path %>
+<button class="btn btn-primary" type="submit">Like</button>
+<%= button_to 'Add Comment',  new_post_comment_path,method: :get %>
+

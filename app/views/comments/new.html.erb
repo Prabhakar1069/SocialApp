@@ -1,0 +1,22 @@
+<div class="container">   
+  <%= form_for @comment, url: {action: :create} do |f| %>   
+      <div>   
+        <h3>Add a Comment</h3>   
+      </div>   
+      <div>   
+        <p>   
+            
+        <div>   
+        <%= f.label :content, "Comment" %><br>  
+              <%= f.text_field :content %>   
+        </div>   
+  
+         
+         </p>   
+      </div>   
+      <div>   
+         
+        <%= f.submit 'Comment' %>   
+      </div>   
+  <% end %>   
+</div>  

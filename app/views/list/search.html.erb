@@ -1,9 +1,11 @@
-<h3>Search Result</h3>  
+<h3>Search Result</h3> 
+<br> 
 <% if @results.count==0 %>
 	<h3> Please enter correct username </h3>
 
 <% else %>
   <% @results.each do |result| %>  
-    <h3><%= result.username %><br></h3>  
+    <h3><%= result.username %></h3>  
+    <%= link_to 'Sent Friend Request', posts_path %>
   <% end %>
 <% end %>    
