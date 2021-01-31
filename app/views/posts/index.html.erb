@@ -1,26 +1,31 @@
 <%= button_to 'Add Post',  new_post_path,method: :get %> <br> <br>
 -------------------------------------------------------------------------------------------
 
-<% @post.each do |posts| %>
-	<div class="container">
-		<% id = posts.user_id %>
-		<% name = @user.find(id).username %>
-		<div> Username - <%= name  %> <br> </div>
-		<%= posts.content %><br> 
 
-		
-	<br>
-		<%= link_to 'Edit Post',edit_post_path(posts.id) %>
-		<%= link_to 'Delete Post',post_path(posts.id),method: :delete %>    
-		<%= button_to 'Comments',post_comments_path(posts),method: :get %>
-		<%= button_to 'Like', post_likes_path(posts), method: :post %>
-		<p><%= posts.likes.count %> <%= (posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-		
-		<br>------------------------------------------------------------------------------------------<br>
-	</div>	
+	<% @post.each do |posts| %>
+		<div class="container">
+		   
+			<% id = posts.user_id %>
+			 
+			<% name = @user.find(id).username %>
+			<div> Username - <%= name  %> <br> </div>
+			<div> Post- <br><%= posts.content %><br></div> 
+
+			
+		<br>
+			<% if can? :update,posts %><%= link_to 'Edit Post',edit_post_path(posts.id) %> <% end %>
+			<% if can? :destroy,posts %><%= link_to 'Delete Post',post_path(posts.id),method: :delete %> <% end %>   
+			<%= button_to 'Comments',post_comments_path(posts),method: :get %>
+			<%= button_to 'Like', post_likes_path(posts), method: :post %>
+			<p><%= posts.likes.count %> <%= (posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+			
+			<br>------------------------------------------------------------------------------------------<br>
+		</div>	
 
 
-<% end %>
+	<% end %>
+
+
 
 
 

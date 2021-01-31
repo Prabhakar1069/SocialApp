@@ -3,8 +3,8 @@
     <%= User.find(comments.user_id).username %> --
 
     <%= comments.content %><br> 
-    <%= link_to 'Edit Comment' ,edit_comment_path(comments.id) %>
-    <%= link_to 'Delete Comment',comment_path(comments.id),method: :delete %><br><br>
+    <% if can? :update,comments %><%= link_to 'Edit Comment' ,edit_comment_path(comments.id) %><% end %>
+    <% if can? :destroy,comments %><%= link_to 'Delete Comment',comment_path(comments.id),method: :delete %><br><br> <%end%>
 
 
 <% end %>

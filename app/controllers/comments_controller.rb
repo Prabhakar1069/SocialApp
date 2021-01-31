@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  
+  load_and_authorize_resource
+  
   def index
     # byebug
     @post = Post.find(params[:post_id])
