@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   def create
    
- end
+  end
 end
 
 # <button class="btn btn-primary" type="submit">Like</button>

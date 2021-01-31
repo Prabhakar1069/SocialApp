@@ -1,0 +1,44 @@
+
+<%= link_to 'Add Friends',list_friend_path %><br> <br><br>
+
+
+
+<h3> Pending Requests List-- </h3>
+
+<% if @pending.count==0 %>
+		<h4> No pending request </h4>
+<% else %>
+	<% @pending.each do |pending| %>  
+		<br>    
+		<%= User.find(pending.sent_by_id).username %>
+		<%= link_to 'View Profile' %>
+		<br>
+		<%= link_to 'Accept', sent_friendrequests_path(pending.sent_by_id),method: :post %>
+		
+		
+		
+	<% end %>
+<% end %>	
+
+
+<br><br>
+
+<h3> Friends List-- </h3>
+<% if @friend1.count==0 and @friend2.count==0 %>
+		<h4> No Freinds! Just make one </h4>
+<% else %>	
+	<% @friend1.each do |friend| %>
+		<br>    
+		<%= User.find(friend.sent_by_id).username %>
+		<%= link_to 'View Profile' %><br>
+		<%= link_to 'Unfriend' %>
+	<% end %> 
+	<% @friend2.each do |friend| %>
+		<br>    
+		<%= User.find(friend.sent_to_id).username %>
+		<%= link_to 'View Profile' %><br>
+		<%= link_to 'Unfriend' %>
+	<% end %> 
+<% end %>	   
+
+

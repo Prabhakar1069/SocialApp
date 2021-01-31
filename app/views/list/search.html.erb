@@ -4,8 +4,16 @@
 	<h3> Please enter correct username </h3>
 
 <% else %>
+  <% i = 0 %>
   <% @results.each do |result| %>  
-    <h3><%= result.username %></h3>  
-    <%= link_to 'Sent Friend Request', posts_path %>
+    <h3><%= result.username %></h3>
+    <h3><%= result.email %></h3>  
+    <% if @flag[i]==1 %>
+        
+      <h4> Already a friend </h4><br> <br>
+    <% else %>
+      <%= link_to 'Send Friend Request', user_friendships_path(result.id),method: :post %>
+    <% end %>
+    <% i = i+1 %>  
   <% end %>
 <% end %>    

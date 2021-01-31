@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   
 
   resources :users, only: %i[index show] do
-    resources :friendships, only: %i[create]
+    resources :friendships, only: %i[index new create show]
       
   end
   resources :posts do 
     resources :comments
   end
-  
+
   resources :posts, only: %i[index new create show] do
     resources :likes, only: %i[create]
   end
@@ -33,6 +33,12 @@ Rails.application.routes.draw do
   
   get 'list/friend'
   get '/search' => 'list#search', :as => 'search_list'
+
+  get 'user/:id/friendrequest', to: 'list#search', as: 'user_friendrequest' 
+  get 'users/:id/friendrequests', to:'friendships#friendrequest',as: 'sent_friendrequests'
+  post 'users/:id/friendrequests', to:'friendships#accept'
+
+  # post 'user/:user_id/friendrequest/:id', to: 'list#sentrequest', as: 'user_sentrequest'
   
   # root 'welcome#index'
 
