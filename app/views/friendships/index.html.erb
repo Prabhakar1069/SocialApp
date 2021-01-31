@@ -17,6 +17,7 @@
 		
 		
 		
+		
 	<% end %>
 <% end %>	
 
@@ -31,13 +32,13 @@
 		<br>    
 		<%= User.find(friend.sent_by_id).username %>
 		<%= link_to 'View Profile' %><br>
-		<%= link_to 'Unfriend' %>
+		<%= link_to 'Unfriend'%>
 	<% end %> 
 	<% @friend2.each do |friend| %>
 		<br>    
 		<%= User.find(friend.sent_to_id).username %>
 		<%= link_to 'View Profile' %><br>
-		<%= link_to 'Unfriend' %>
+		<%= link_to 'Unfriend'%>
 	<% end %> 
 <% end %>	   
 

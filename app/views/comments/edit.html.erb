@@ -1,13 +1,13 @@
 <div class="container">   
-  <%= form_for @post, url: {action: :create} do |f| %>   
+  <%= form_for @comment, url: comment_path(@comment) do |f| %>   
       <div>   
-        <h3>Add a Post</h3>   
+        <h3>Edit a Comment</h3>   
       </div>   
       <div>   
         <p>   
             
         <div>   
-            <label>Post</label>   
+        <%= f.label :content, "Comment" %><br>  
               <%= f.text_field :content %>   
         </div>   
   
@@ -16,7 +16,7 @@
       </div>   
       <div>   
          
-        <%= f.submit 'Create Post' %>   
+        <%= f.submit 'Comment' %>   
       </div>   
   <% end %>   
-</div> 
+</div>  

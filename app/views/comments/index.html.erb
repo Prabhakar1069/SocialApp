@@ -2,7 +2,9 @@
 <% @comment.each do |comments| %>
     <%= User.find(comments.user_id).username %> --
 
-    <%= comments.content %><br> </br>
+    <%= comments.content %><br> 
+    <%= link_to 'Edit Comment' ,edit_comment_path(comments.id) %>
+    <%= link_to 'Delete Comment',comment_path(comments.id),method: :delete %><br><br>
 
 
 <% end %>

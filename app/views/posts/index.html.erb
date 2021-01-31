@@ -10,8 +10,9 @@
 
 		
 	<br>
-	    
-		<%= button_to 'Comment',post_comments_path(posts),method: :get %>
+		<%= link_to 'Edit Post',edit_post_path(posts.id) %>
+		<%= link_to 'Delete Post',post_path(posts.id),method: :delete %>    
+		<%= button_to 'Comments',post_comments_path(posts),method: :get %>
 		<%= button_to 'Like', post_likes_path(posts), method: :post %>
 		<p><%= posts.likes.count %> <%= (posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 		

@@ -5,15 +5,18 @@ class PostsController < ApplicationController
     @user = User.all
   end
 
-  def show
-    # byebug
-    @post = Post.find(params[:id])
-  end
+  # def show
+  #   # byebug
+  #   @post = Post.find(params[:id])
+  # end
 
   def new
     # byebug
     @post = Post.new
   end
+  def edit
+    @post = Post.find(params[:id])
+  end  
 
   def create
     
@@ -29,12 +32,24 @@ class PostsController < ApplicationController
   end
   def destroy
     @post = Post.find(params[:id])
-    return unless current_user.id == @post.user_id
+    # return unless current_user.id == @post.user_id
 
     @post.destroy
-    flash[:success] = 'Post deleted'
-    redirect_back(fallback_location: root_path)
+    redirect_to post_path
+    flash[:notice] = 'Post deleted'
+    
   end
+  def update 
+    @post = Post.find(params[:id])
+    
+    # byebug
+    if @post.update(content: params[:post][:content]) 
+        redirect_to post_path
+        flash[:notice] = 'post is updated.'
+    else
+        render 'edit'
+    end
+  end  
 
   
   
